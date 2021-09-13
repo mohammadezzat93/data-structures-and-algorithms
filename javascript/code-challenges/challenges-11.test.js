@@ -85,7 +85,7 @@ const divisibleByFiveTwoToThePower = (input) => { //
     let Array = [];
     input.map(item => {
         Array = item.map(number => {
-            if (number % 5 === 0) {
+            if (number % 5 === 0 && typeof (number) === 'number') {
                 return Math.pow(2, number);
             }
         });
