@@ -5,8 +5,7 @@ CHALLENGE 1 - Review
 
 Write a function named longestString that takes in an array of strings and returns the index position of the longest string. 
 ------------------------------------------------------------------------------------------------ */
-
-const longestString = (arr) => {
+const longestString = (arr) => { 
   let str = 0;
   let longest = '';
   for (var i = 0; i < arr.length; i++) {
@@ -59,7 +58,7 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  let number = arr.map(item => item.replace(/[^0-9\.]+/g, ''))
+  let number = arr.map(item=> item.replace(/[^0-9\.]+/g,''))
   return number;
 };
 
@@ -72,9 +71,11 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  let strOdd = str.split('');
-  let result = strOdd.filter((item, index) => {
-    if (index % 2 != 0) {
+  // Solution code here...
+  let strOdd=str.split('');
+  let result=strOdd.filter((item,index)=>{
+    if(index %2 !=0)
+    {
       return item;
     }
   })
@@ -89,15 +90,15 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   let str = true;
-  arr.filter(item => {
-    if (item.includes(":)")) {
+  arr.filter(item=> {
+    if(item.includes(":)")){
       return str;
     }
-    else {
-      str = false;
+    else{
+      str=false;
     }
   }
-  );
+  )
   return str;
 };
 
