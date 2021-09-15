@@ -5,6 +5,7 @@ CHALLENGE 1 - Review
 
 Write a function named longestString that takes in an array of strings and returns the index position of the longest string. 
 ------------------------------------------------------------------------------------------------ */
+const longestString = (arr) => { 
   let str = 0;
   let longest = '';
   for (var i = 0; i < arr.length; i++) {
@@ -27,7 +28,7 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 const firstLetters = (arr) => {
   let firstLetter = arr.map(item => {
     return item[0];
-  })
+  });
   return firstLetter;
 };
 
@@ -56,16 +57,9 @@ Write a function named standardizePhoneNumbers that takes in an array of phone n
 For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
-const standardizePhoneNumbers = (arr) => { //
-  let newArr = arr.map((i) => {
-    let b = i.split("");
-    b.splice(0, 1);
-    b.splice(3, 1);
-    b.splice(3, 1);
-    b.splice(6, 1);
-    return b.join("");
-  });
-  return newArr;
+const standardizePhoneNumbers = (arr) => {
+  let number = arr.map(item=> item.replace(/[^0-9\.]+/g,''))
+  return number;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,13 +70,16 @@ Write a function named onlyOddChars that takes in a string and returns only the 
 For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
-const onlyOddChars = (str) => { //
-  let newArray = str.split('').map((item, index) => {
-    if (index % 2 != 0) {
+const onlyOddChars = (str) => {
+  // Solution code here...
+  let strOdd=str.split('');
+  let result=strOdd.filter((item,index)=>{
+    if(index %2 !=0)
+    {
       return item;
     }
-  });
-  return newArray.join('');
+  })
+  return result.join('')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -91,20 +88,18 @@ CHALLENGE 6
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
 
-  let newArray = arr.map((item) => { //
-    if (item.includes(":)")) {
-      return true;
+const allHappy = (arr) => {
+  let str = true;
+  arr.filter(item=> {
+    if(item.includes(":)")){
+      return str;
     }
-     else {
-      return false;
+    else{
+      str=false;
     }
-  })
-  if(!newArray.includes(false)) {
-    return true;
-  } 
-  else if (newArray.includes(false)) {
-    return false;
   }
+  )
+  return str;
 };
 
 /* ------------------------------------------------------------------------------------------------
