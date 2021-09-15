@@ -5,8 +5,6 @@ CHALLENGE 1 - Review
 
 Write a function named longestString that takes in an array of strings and returns the index position of the longest string. 
 ------------------------------------------------------------------------------------------------ */
-
-const longestString = (arr) => {
   let str = 0;
   let longest = '';
   for (var i = 0; i < arr.length; i++) {
@@ -58,9 +56,16 @@ Write a function named standardizePhoneNumbers that takes in an array of phone n
 For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
-const standardizePhoneNumbers = (arr) => {
-  let number = arr.map(item => item.replace(/[^0-9\.]+/g, ''))
-  return number;
+const standardizePhoneNumbers = (arr) => { //
+  let newArr = arr.map((i) => {
+    let b = i.split("");
+    b.splice(0, 1);
+    b.splice(3, 1);
+    b.splice(3, 1);
+    b.splice(6, 1);
+    return b.join("");
+  });
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,14 +76,13 @@ Write a function named onlyOddChars that takes in a string and returns only the 
 For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
-const onlyOddChars = (str) => {
-  let strOdd = str.split('');
-  let result = strOdd.filter((item, index) => {
+const onlyOddChars = (str) => { //
+  let newArray = str.split('').map((item, index) => {
     if (index % 2 != 0) {
       return item;
     }
-  })
-  return result.join('')
+  });
+  return newArray.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,18 +91,20 @@ CHALLENGE 6
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
 
-const allHappy = (arr) => {
-  let str = true;
-  arr.filter(item => {
+  let newArray = arr.map((item) => { //
     if (item.includes(":)")) {
-      return str;
+      return true;
     }
-    else {
-      str = false;
+     else {
+      return false;
     }
+  })
+  if(!newArray.includes(false)) {
+    return true;
+  } 
+  else if (newArray.includes(false)) {
+    return false;
   }
-  );
-  return str;
 };
 
 /* ------------------------------------------------------------------------------------------------
