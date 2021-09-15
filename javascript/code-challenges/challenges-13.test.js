@@ -7,9 +7,17 @@ Write a function named longestString that takes in an array of strings and retur
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
-
+  let str = 0;
+  let longest = '';
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].length > str) {
+      str = arr[i].length;
+      longest = arr[i];
+    }
+  }
+  return arr.indexOf(longest);
 };
-  
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -19,8 +27,8 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-  let firstLetter = arr.map(item =>{
-   return item[0] ;
+  let firstLetter = arr.map(item => {
+    return item[0];
   })
   return firstLetter;
 };
@@ -35,8 +43,8 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 
 const findHappiness = (arr) => {
 
-  let str = arr.filter(item =>{
-    if(item.includes(':)'))
+  let str = arr.filter(item => {
+    if (item.includes(':)'))
       return true;
   });
   return str;
@@ -51,11 +59,8 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  let num = arr.filter(item =>{
-    if(item.slice('-'))
-      return true;
-  });
-  return num;
+  let number = arr.map(item => item.replace(/[^0-9\.]+/g, ''))
+  return number;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,11 +72,13 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  let strOdd = str.filter(item =>{
-    if (item % 2 === 1)
-      return true;
-  });
-  return strOdd;
+  let strOdd = str.split('');
+  let result = strOdd.filter((item, index) => {
+    if (index % 2 != 0) {
+      return item;
+    }
+  })
+  return result.join('')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,10 +88,16 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  let str = arr.filter(item =>{
-    if(item.includes(':)'))
-      return true;
-  });
+  let str = true;
+  arr.filter(item => {
+    if (item.includes(":)")) {
+      return str;
+    }
+    else {
+      str = false;
+    }
+  }
+  );
   return str;
 };
 
@@ -178,7 +191,7 @@ describe('Testing challenge 1', () => {
   test('It should return an index position of the longest string', () => {
     const strArray1 = ['Ginger', 'Goose', 'Tangerine', 'Rosie', 'Mario', 'Malaki']
     const strArray2 = [];
-    const strArray3= ['Ginger']
+    const strArray3 = ['Ginger']
 
     expect(longestString(strArray1)).toStrictEqual(2);
     expect(longestString(strArray2)).toStrictEqual(-1);
