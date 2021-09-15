@@ -5,11 +5,15 @@ CHALLENGE 1 - Review
 
 Write a function named longestString that takes in an array of strings and returns the index position of the longest string. 
 ------------------------------------------------------------------------------------------------ */
-
-const longestString = (arr) => { //
-  const originalArr = [...arr];
-  const longest = originalArr.sort((a, b) => b.length - a.length);
-  return arr.indexOf(longest[0]);
+  let str = 0;
+  let longest = '';
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].length > str) {
+      str = arr[i].length;
+      longest = arr[i];
+    }
+  }
+  return arr.indexOf(longest);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,7 +91,6 @@ CHALLENGE 6
 Write a function named allHappy that takes in an array of strings and returns a Boolean indicating whether all those strings contain ":)".
 ------------------------------------------------------------------------------------------------ */
 
-const allHappy = (arr) => {
   let newArray = arr.map((item) => { //
     if (item.includes(":)")) {
       return true;
